@@ -14,16 +14,14 @@ MediaPlayer mediaPlayer;
 @Override
     public void onCreate(){
 
-
-
-
     }
 
     @Override
 
+
     public int onStartCommand(Intent intent, int flag, int idProcess){
 
-
+        //Carga un sonido de la carpeta raw y comienza a reproducirlo en loop
         mediaPlayer= MediaPlayer.create(this,R.raw.electro);
         mediaPlayer.start();
         mediaPlayer.setLooping(true);
@@ -33,7 +31,6 @@ MediaPlayer mediaPlayer;
 
     @Override
     public void onDestroy(){
-
 
      mediaPlayer.stop();
 

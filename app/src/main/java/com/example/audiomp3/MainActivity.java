@@ -2,7 +2,6 @@ package com.example.audiomp3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.IntentService;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Build;
@@ -10,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
+
 
     private MediaPlayer mediaPlayer;
 
@@ -22,18 +22,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void reproducir(View v) {
 
-      //  startService(new Intent(this, ServiceAudio.class));
+      //Descomentar esta linea para iniciar un Background Service(Disponible solo en versiones inferiores a oreo)
+      //startService(new Intent(this, ServiceAudio.class));
 
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            startForegroundService(new Intent(this,FotregroundAudio.class));
+            startForegroundService(new Intent(this, ForegroundAudio.class));
         }
-
 
     }
 
     //CARGAR SONIDOS ADICIONALES
-
-
     public void sax(View v){
 
         mediaPlayer=MediaPlayer.create(this,R.raw.sax);
@@ -60,21 +58,17 @@ public class MainActivity extends AppCompatActivity {
         mediaPlayer=MediaPlayer.create(this,R.raw.voice3);
         mediaPlayer.start();
         mediaPlayer.setLooping(true);
+
+        //mediaPlayer.stop();
     }
-
-
-
 
 
     public void parar(View v){
 
-    //    mediaPlayer.stop();
+
         stopService(new Intent(getBaseContext(),ServiceAudio.class));
-        stopService(new Intent(getBaseContext(),FotregroundAudio.class));
+        stopService(new Intent(getBaseContext(), ForegroundAudio.class));
 
     }
-
-
-
 
 }

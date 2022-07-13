@@ -24,10 +24,11 @@
         </activity>
 
 
+       <!--Aqui damos de alta los servicios-->
         <service android:name=".ServiceAudio"
             android:enabled="true"/>
 
-        <service android:name=".FotregroundAudio"
+        <service android:name=".ForegroundAudio"
             android:enabled="true"/>
 
 
